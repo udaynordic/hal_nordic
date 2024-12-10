@@ -171,6 +171,8 @@ enum nrf_wifi_sys_commands {
 	NRF_WIFI_CMD_OFFLOAD_RAW_TX_PARAMS,
 	/** Command to enable/disable raw tx offloading */
 	NRF_WIFI_CMD_OFFLOAD_RAW_TX_CTRL,
+	/** Scan debug params event from RPU */
+	NRF_WIFI_EVENT_SCAN_DEBUG,	
 };
 
 /**
@@ -1734,6 +1736,14 @@ struct nrf_wifi_cmd_reset_stats {
        /** UMAC header, @ref nrf_wifi_sys_head */
        struct nrf_wifi_sys_head sys_head;
 } __NRF_WIFI_PKD;
+
+struct nrf_wifi_umac_event_scan_debug {
+	/** UMAC header, @ref nrf_wifi_sys_head */
+	struct nrf_wifi_sys_head sys_head;
+	/** debug data */
+	unsigned int debug_data[16];
+} __NRF_WIFI_PKD;
+
 
 /**
  * @}
